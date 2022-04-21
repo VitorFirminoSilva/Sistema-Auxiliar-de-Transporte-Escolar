@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProjetoIntegradoPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.edu.ifsp.pep.model.Administrador</class>
+    <class>br.edu.ifsp.pep.model.Cliente</class>
+    <class>br.edu.ifsp.pep.model.Contrato</class>
+    <class>br.edu.ifsp.pep.model.Crianca</class>
+    <class>br.edu.ifsp.pep.model.Funcionario</class>
+    <class>br.edu.ifsp.pep.model.HistoricoUtilizacao</class>
+    <class>br.edu.ifsp.pep.model.Local</class>
+    <class>br.edu.ifsp.pep.model.Manutencao</class>
+    <class>br.edu.ifsp.pep.model.Monitor</class>
+    <class>br.edu.ifsp.pep.model.Motorista</class>
+    <class>br.edu.ifsp.pep.model.Movimentacao</class>
+    <class>br.edu.ifsp.pep.model.Pagamento</class>
+    <class>br.edu.ifsp.pep.model.Parcela</class>
+    <class>br.edu.ifsp.pep.model.Veiculo</class>
+    <class>br.edu.ifsp.pep.model.Viagem</class>
+    <class>br.edu.ifsp.pep.model.Vinculo</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_projeto?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="ifsp"/>
+    </properties>
+  </persistence-unit>
+</persistence>

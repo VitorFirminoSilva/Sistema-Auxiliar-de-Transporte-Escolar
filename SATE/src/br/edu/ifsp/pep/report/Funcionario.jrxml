@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Funcionario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f158cd1-aaa6-4210-9703-55006edc262e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjetoAdapter.xml"/>
+	<queryString language="ejbql">
+		<![CDATA[SELECT f FROM Funcionario f WHERE f.status = 1]]>
+	</queryString>
+	<field name="salarioBase" class="java.lang.Double">
+		<fieldDescription><![CDATA[salarioBase]]></fieldDescription>
+	</field>
+	<field name="numeroRegistro" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroRegistro]]></fieldDescription>
+	</field>
+	<field name="nomeFuncionario" class="java.lang.String">
+		<fieldDescription><![CDATA[nomeFuncionario]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<variable name="totalSalario" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{salarioBase}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="9" width="555" height="61" uuid="d7ec40ca-1ad8-4ba1-8294-00e0f2572a9f"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="26" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Relatório de funcionários]]></text>
+			</staticText>
+			<textField pattern="d MMMM yyyy h:mm:ss a z">
+				<reportElement x="385" y="53" width="170" height="20" uuid="9a2caaf9-1ec3-4c21-bc89-8b9021f822ff"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<image>
+				<reportElement x="320" y="22" width="110" height="44" uuid="93822579-476b-4c51-8ecf-d70bb6ca55c5"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["br/edu/ifsp/pep/report/logo.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="16" width="200" height="56" uuid="085b41c5-4c53-45aa-b926-aa52b1e36ad6"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Sistema Auxiliar de Transporte Escolar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="66" width="555" height="6" uuid="948b4261-282e-462b-bd22-9b21eda990ba"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="120" height="20" uuid="5847d836-58e2-4fab-8bd0-b3f8579c9127">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5cc75a4f-9ce2-4386-b174-31562ee8a871"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Número de registro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="235" height="20" uuid="aec5429f-0a65-42ed-9958-d78fe5991f64">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc6a2324-4459-4663-8679-0f2338d137cc"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Nome do funcionário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="20" uuid="3308debe-c913-4a7e-8be2-c13cbda420d2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7eeb8b74-b76c-44cf-9d5f-a7d256374c70"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salário base]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="44f41097-87e6-47f1-826c-3daacd76881c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9cf2ed5-9974-432c-bc4e-da1886b6e40b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="120" height="20" uuid="94b40305-16c2-4dfc-b93b-97ba44bed5c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5cc75a4f-9ce2-4386-b174-31562ee8a871"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroRegistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="235" height="20" uuid="45be57df-afec-4bba-b031-60a418ac12b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc6a2324-4459-4663-8679-0f2338d137cc"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " +$F{nomeFuncionario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.##¤;#,##0.##- ¤">
+				<reportElement x="355" y="0" width="100" height="20" uuid="4d2f9633-bd16-4cb7-9f19-a0036a7af4d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7eeb8b74-b76c-44cf-9d5f-a7d256374c70"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salarioBase}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="f6169d9e-909f-4632-8d7a-a418eb917903"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ativo]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="74" splitType="Stretch">
+			<textField evaluationTime="Master">
+				<reportElement x="500" y="10" width="55" height="30" uuid="50425aa4-b9e7-4217-8c29-f4935c185f54"/>
+				<textFieldExpression><![CDATA["Pag. " + $V{MASTER_CURRENT_PAGE} + " de " +  $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="10" uuid="880b2aea-aa8a-466a-9968-b692e92c0b0c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="355" height="21" uuid="a0213955-f9c8-4148-8a20-20715937389d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Total à pagar pelos funcionários]]></text>
+			</staticText>
+			<textField pattern="#,##0.00¤;#,##0.00- ¤">
+				<reportElement x="355" y="0" width="200" height="21" uuid="17842e7e-a7e6-44d9-a7a0-2fedfb7331d6"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalSalario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

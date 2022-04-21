@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cliente" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f158cd1-aaa6-4210-9703-55006edc262e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ProjetoAdapter.xml"/>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="dataFim" class="java.util.Date"/>
+	<queryString language="ejbql">
+		<![CDATA[SELECT p FROM Parcela p WHERE p.dataVencimeto BETWEEN $P{dataInicio} AND $P{dataFim} ORDER BY p.status DESC]]>
+	</queryString>
+	<field name="dataVencimeto" class="java.util.Date">
+		<fieldDescription><![CDATA[dataVencimeto]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Double">
+		<fieldDescription><![CDATA[valor]]></fieldDescription>
+	</field>
+	<field name="contrato" class="br.edu.ifsp.pep.model.Contrato">
+		<fieldDescription><![CDATA[contrato]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<variable name="receber" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{status}.equals( "PG") ? $F{valor} : 0]]></variableExpression>
+	</variable>
+	<variable name="Areceber" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{status}.equals("PD") ? $F{valor} : 0]]></variableExpression>
+	</variable>
+	<group name="GroupStatus">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<staticText>
+					<reportElement x="0" y="29" width="200" height="20" uuid="5578d327-0d55-4fa3-9c35-9b82f8bb50c1">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc6d1bbe-5134-457a-b6e0-e8700eca7de1"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Nome Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="200" y="29" width="135" height="20" uuid="ca5c653b-2d2e-44b0-b465-b9c04ea706f4">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44f5cc4b-8fd2-4458-9d12-0dcf3137faf9"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CPF]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="335" y="29" width="120" height="20" uuid="9ca3b3c9-09af-45ea-9f69-bf9bf794a2a4">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="972bfbb6-82ec-45c8-8df7-50e40a1f5735"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data Vencimeto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="455" y="29" width="100" height="20" uuid="90ded23c-2b5c-46eb-8fef-07ae5857a4b9">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c64dcda8-0468-42af-a533-98ec03f51e16"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="12" width="555" height="17" uuid="d3ea273e-3aac-4436-a430-ba9f920a8bff"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{status}.equals( "PG") ? "Pago" :"Inadimplentes"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="9" width="555" height="61" uuid="d7ec40ca-1ad8-4ba1-8294-00e0f2572a9f"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="26" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Relatório de pagamento dos Clientes]]></text>
+			</staticText>
+			<textField pattern="d MMMM yyyy h:mm:ss a z">
+				<reportElement x="385" y="53" width="170" height="20" uuid="9a2caaf9-1ec3-4c21-bc89-8b9021f822ff"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<image>
+				<reportElement x="320" y="22" width="110" height="44" uuid="93822579-476b-4c51-8ecf-d70bb6ca55c5"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["br/edu/ifsp/pep/report/logo.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="150" y="16" width="200" height="56" uuid="085b41c5-4c53-45aa-b926-aa52b1e36ad6"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Sistema Auxiliar de Transporte Escolar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="66" width="555" height="6" uuid="948b4261-282e-462b-bd22-9b21eda990ba"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="18" uuid="c6a7283d-1b88-4819-b9cc-097468e9156b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc6d1bbe-5134-457a-b6e0-e8700eca7de1"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrato}.getCrianca().getCliente().getNomeMae()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="135" height="18" uuid="6ae05716-d3f0-4f46-8c1b-b1d7136b4d83">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44f5cc4b-8fd2-4458-9d12-0dcf3137faf9"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrato}.getCrianca().getCliente().getCpfResponsavel()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="335" y="0" width="120" height="18" uuid="40451ea2-41e3-4081-b265-3dec14623694">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="972bfbb6-82ec-45c8-8df7-50e40a1f5735"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataVencimeto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00¤;#,##0.00- ¤">
+				<reportElement x="455" y="0" width="100" height="18" uuid="8874e588-08dc-4e21-9f4c-e6aed1b5cd16">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c64dcda8-0468-42af-a533-98ec03f51e16"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField evaluationTime="Master">
+				<reportElement x="500" y="10" width="55" height="30" uuid="50425aa4-b9e7-4217-8c29-f4935c185f54"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag. " + $V{MASTER_CURRENT_PAGE} + " de " +  $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="10" uuid="880b2aea-aa8a-466a-9968-b692e92c0b0c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="440" height="20" uuid="bdd45e84-50c1-4b60-a9fd-f7560a707278"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recebido: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="440" height="20" uuid="8220d1b2-c596-4fcb-bb3f-8ac351846181"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A receber: ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00¤;#,##0.00- ¤">
+				<reportElement x="440" y="0" width="115" height="20" uuid="f1941497-6c8d-4869-8b2e-20fb58f4c9e4"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{receber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00¤;#,##0.00- ¤">
+				<reportElement x="440" y="20" width="115" height="20" uuid="c186b868-6bae-4182-b105-ea1344db56ca"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Areceber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
